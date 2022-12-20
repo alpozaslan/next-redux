@@ -7,9 +7,9 @@ const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
 
   const { data: todos, isLoading, isSuccess, isError, error } = useGetTodosQuery();
-  const [addTodo, { isLoading: isAdding }] = useAddTodoMutation();
-  const [updateTodo, { isLoading: isUpdating }] = useUpdateTodoMutation();
-  const [deleteTodo, { isLoading: isDeleting }] = useDeleteTodoMutation();
+  const [addTodo] = useAddTodoMutation();
+  const [updateTodo] = useUpdateTodoMutation();
+  const [deleteTodo] = useDeleteTodoMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
