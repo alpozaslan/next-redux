@@ -1,36 +1,35 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { HYDRATE, createWrapper } from 'next-redux-wrapper'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import users from './users/reducer'
-import counter from './counter/reducer'
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { HYDRATE, createWrapper } from "next-redux-wrapper";
+
+import users from "./UsersSlice";
+import counter from "./counterSlice";
 
 const combinedReducer = combineReducers({
-  counter,
   users,
-})
+  counter,
+});
 
 const masterReducer = (state, action) => {
   if (action.type === HYDRATE) {
     const nextState = {
-      ...state,
+      ...state, // use previous state
       counter: {
-        count: state.counter.count + action.payload.counter.count
+        count: state.counter.count + action.payload.counter.count,
       },
       users: {
-        users: [...new Set([...action.payload.users.users, ...state.users.users])]
-      }
-    }
-    return nextState
-  }
-  else {
+        users: [...state.users.users, ...action.payload.users.users],
+      },
+    };
+
+    return nextState;
+  } else {
     return combinedReducer(state, action);
   }
-}
+};
 
-const initStore = () => {
-  return createStore(masterReducer, composeWithDevTools(
-    applyMiddleware()
-  ))
-}
+export const makeStore = () =>
+  configureStore({
+    reducer: masterReducer,
+  });
 
-export const wrapper = createWrapper(initStore)
+export const wrapper = createWrapper(makeStore);

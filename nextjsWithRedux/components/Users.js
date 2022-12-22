@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addUser } from "../store/users/action";
+import { addUser } from "../store/UsersSlice";
 
 export default function Clock() {
   const dispatch = useDispatch();
