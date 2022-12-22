@@ -54,3 +54,7 @@ The repository includes the following projects:
 ### Project 1: Redux Toolkit Query
 
 This project is a simple app that uses Redux Toolkit Query to fetch data and make asynchronous requests. It is based on Dave Gray's [Redux Toolkit Query Tutorial and RTK Query CRUD Example App](https://www.youtube.com/watch?v=HyZzCHgG3AY) video.
+
+### Project 2: Redux Toolkit Query (Advanced)
+
+This project is a blog app that uses Redux Toolkit Query to fetch data and make asynchronous requests. It is based on Dave Gray's [Redux Advanced Tutorial - React, Redux Toolkit, RTK Query Project](https://www.youtube.com/watch?v=9P2IUx13MZI) tutorial.
